@@ -3,7 +3,8 @@ module carrier_synchronizer_tb();
 	reg sys_reset; 
 	reg sys_enable; 
 	
-	wire signed [11:0] op_carrier_sync; 
+	wire signed [11:0] op_carrier_real;
+	wire signed [11:0] op_carrier_imag;
 
 	
 	// ------------------------------------  
@@ -33,6 +34,7 @@ module carrier_synchronizer_tb();
 		sys_clock = 1'b1; 
 		# (clock_period / 2); 
 	end 
+	
 
 	// -------------------------------------------------------  
 	// 			Instantiate module : Modulator 				 	   
@@ -64,23 +66,18 @@ module carrier_synchronizer_tb();
 	// ---------------------------------------------------------  
 	// 			Instantiate module : carrier synchronizer 				 	   
 	// ---------------------------------------------------------  
-	wire signed [11:0] get_op_carrier_sync;
-	reg signed [11:0] reg_op_carrier_sync; 
-	always@(negedge sys_clock or negedge sys_reset) begin 
-		if(sys_reset == 1'b0) begin 
-			reg_op_carrier_sync <= 12'd0;
-		end else begin 
-			reg_op_carrier_sync <= get_op_carrier_sync;
-		end 
-	end 
+	wire signed [11:0] get_op_carrier_real;
+	wire signed [11:0] get_op_carrier_imag;
 
 	carrier_synchronizer carrier_synchronizer_uut_c( 
 		.ip_data(get_op_agc), 
 		.ip_clock(sys_clock), 
 		.ip_reset(sys_reset), 
-		.op_data(get_op_carrier_sync) 
+		.op_real(get_op_carrier_real), 
+		.op_imag(get_op_carrier_imag)
 	);
 
-	assign op_carrier_sync = reg_op_carrier_sync;
+	assign op_carrier_real = get_op_carrier_real; 
+	assign op_carrier_imag = get_op_carrier_imag;
 	
 endmodule

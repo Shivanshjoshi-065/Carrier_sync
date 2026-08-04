@@ -3,35 +3,34 @@ module accumulator(
 	input signed [11:0] ip_data, 
 	input ip_clock, 
 	input ip_reset, 
-	output [11:0] op_data
+	output signed [11:0] op_data
 );  
 	
 	reg signed [15:0] reg_sum; 
-	reg [4:0] reg_counter;
+	reg [4:0] reg_counter; 
+	// wire signed [15:0] wire_sum; 
 	
-	always@(negedge ip_clock or negedge ip_reset) begin 
-		if(ip_reset == 1'd0) begin 
-			reg_sum <= 16'd0; 
+	always@(posedge ip_clock or negedge ip_reset) begin 
+		if(ip_reset == 1'b0) begin 
+			reg_sum <= 16'sd0; 
 			reg_counter <= 5'd0;
 		end else begin 
 			if(reg_counter == 5'd31) begin 
-				reg_sum <= reg_sum;
+				  if(reg_sum > 16'sd32767) begin 
+					reg_sum <= 16'sd32767;
+				  end else if (reg_sum < -16'sd32767) begin 
+					reg_sum <= -16'sd32767;
+				  end else begin 
+					reg_sum <= 16'sd0; 
+				  end 
 			end else begin 
 				reg_sum <= reg_sum + ip_data; 
 			end 
-			reg_counter <= reg_counter + 4'd1;
+			reg_counter <= reg_counter + 5'd1;
 		end 
 	end 
 
 	assign op_data = reg_sum[15:4]; 
-	/*
-	always @(negedge ip_clock or negedge ip_reset) begin
-		$display("ACC: in=%0d count=%0d sum=%0d",
-				 ip_data,
-				 reg_counter,
-				 op_data);
-	end 
-	*/
 	
 	
 endmodule 

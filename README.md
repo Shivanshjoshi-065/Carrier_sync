@@ -24,10 +24,10 @@ The AGC stabilizes the received signal amplitude using:
 The carrier synchronizer recovers the carrier phase and generates oversampled baseband I and Q signals.
 
 # Tools Used
-•	Verilog HDL
-•	Xilinx ISE 13.x
-•	Microchip Libero SoC
-•	ModelSim / QuestaSim
+•	Verilog HDL 
+• Xilinx ISE 13.x 
+• Microchip Libero SoC 
+• ModelSim / QuestaSim
 
 # Simulation
 The repository includes simulation waveforms demonstrating:

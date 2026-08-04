@@ -2,14 +2,14 @@ module modulator(
 	input ip_clock, 
 	input ip_reset, 
 	input ip_enable, 
-	output [11:0] op_if
+	output signed [11:0] op_if
 ); 
 
 	
 	// ---------------------------------  
 	// 		Prbs generator 				 	   
 	// ---------------------------------   
-	wire get_op_prbs; 
+	wire get_op_prbs;
 	prbs_generator prbs_generator_inst( 
 		.ip_clock(ip_clock), 
 		.ip_reset(ip_reset), 
@@ -27,16 +27,17 @@ module modulator(
 		.op_if(get_op_if)
 	);
 	
+	
 	// ---------------------------------  
 	// 		Bandpass filter  				 	   
 	// ---------------------------------   
-	wire signed [11:0] get_op_bandpass;
+	wire signed [27:0] get_op_bandpass;
 	reg signed [11:0] reg_op_bandpass; 
 	always@(posedge ip_clock or negedge ip_reset) begin 
 		if(ip_reset == 1'b0) begin 
-			reg_op_bandpass <= 12'd0;
+			reg_op_bandpass <= 12'sd0; 
 		end else begin 
-			reg_op_bandpass <= get_op_bandpass;
+			reg_op_bandpass <= get_op_bandpass[22:11];
 		end 
 	end 
 	
@@ -47,6 +48,15 @@ module modulator(
 		.op_data(get_op_bandpass)	
 	);
 		
-	assign op_if = reg_op_bandpass;
+	assign op_if = reg_op_bandpass; 
+	/*
+	always @(posedge ip_clock or negedge ip_reset) begin
+		$display("MOD: prbs=%0d qpsk_mod= %0d get_bandpass=%0d reg_bandpass=%0d",
+				 get_op_prbs,
+				 get_op_if, 
+				 get_op_bandpass,
+				 reg_op_bandpass);
+	end
+	*/
 	
 endmodule 

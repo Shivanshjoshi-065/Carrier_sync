@@ -10,32 +10,32 @@ The transmitter generates a QPSK signal using:
 - I/Q Modulator
 
 The receiver consists of:
-•	Automatic Gain Control (AGC)
-•	Carrier Synchronizer (Costas Loop)
-•	Low-Pass Filters
-•	NCO for carrier recovery 
+- Automatic Gain Control (AGC)
+- Carrier Synchronizer (Costas Loop)
+- Low-Pass Filters
+- NCO for carrier recovery 
 
 The AGC stabilizes the received signal amplitude using:
-•	Power Estimation
-•	Gain Error Calculation
-•	Gain Accumulator
-•	Gain Scaling 
+- Power Estimation
+- Gain Error Calculation
+- Gain Accumulator
+- Gain Scaling 
 
 The carrier synchronizer recovers the carrier phase and generates oversampled baseband I and Q signals.
 
 # Tools Used 
-•	Verilog HDL 
-• Xilinx ISE 13.x 
-• Microchip Libero SoC 
-• ModelSim / QuestaSim
+- Verilog HDL
+- Xilinx ISE 13.4
+- Microchip Libero SoC
+- ModelSim / QuestaSim
 
 # Simulation
 The repository includes simulation waveforms demonstrating:
-•	QPSK modulation
-•	NCO sine and cosine generation
-•	Mixer outputs
-•	Low-pass filter outputs
-•	AGC operation
-•	Carrier recovery
-•	Recovered baseband I/Q signals
+- QPSK modulation
+- NCO sine and cosine generation
+- Mixer outputs
+- Low-pass filter outputs
+- AGC operation
+- Carrier recovery
+- Recovered baseband I/Q signals
 

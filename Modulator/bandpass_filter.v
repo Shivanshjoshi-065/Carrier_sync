@@ -1,8 +1,8 @@
 module bandpass_filter( 
-	input [11:0] ip_data, 
+	input signed [11:0] ip_data, 
 	input ip_clock, 
 	input ip_reset, 
-	output [11:0] op_data
+	output signed [27:0] op_data
 
 ); 
 
@@ -86,7 +86,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 1
 	// ------------------------------- //  
-	wire signed [11:0] get_op_filter_tap_1;
+	wire signed [23:0] get_op_filter_tap_1;
 	filter_tap_1 filter_tap_1_inst( 
 		.ip_data(ip_data), 
 		.ip_coeff(coeffe_1),
@@ -98,8 +98,8 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 2
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_2;
-	filter_tap filter_tap_2_inst( 
+	wire signed [27:0] get_op_filter_tap_2;
+	filter_tap_2 filter_tap_2_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_1), 
 		.ip_coeff(coeffe_2),
@@ -112,7 +112,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 3
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_3;
+	wire signed [27:0] get_op_filter_tap_3;
 	filter_tap filter_tap_3_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_2),
@@ -126,7 +126,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 4
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_4;
+	wire signed [27:0] get_op_filter_tap_4;
 	filter_tap filter_tap_4_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_3),
@@ -139,7 +139,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 5
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_5;
+	wire signed [27:0] get_op_filter_tap_5;
 	filter_tap filter_tap_5_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_4),
@@ -152,7 +152,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 6
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_6;
+	wire signed [27:0] get_op_filter_tap_6;
 	filter_tap filter_tap_6_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_5),
@@ -165,7 +165,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 7
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_7;
+	wire signed [27:0] get_op_filter_tap_7;
 	filter_tap filter_tap_7_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_6),
@@ -178,7 +178,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 8
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_8;
+	wire signed [27:0] get_op_filter_tap_8;
 	filter_tap filter_tap_8_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_7), 
@@ -191,7 +191,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 9
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_9;
+	wire signed [27:0] get_op_filter_tap_9;
 	filter_tap filter_tap_9_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_8),
@@ -204,7 +204,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 10
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_10;
+	wire signed [27:0] get_op_filter_tap_10;
 	filter_tap filter_tap_10_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_9),
@@ -217,7 +217,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 11
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_11;
+	wire signed [27:0] get_op_filter_tap_11;
 	filter_tap filter_tap_11_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_10),
@@ -230,7 +230,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 12
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_12;
+	wire signed [27:0] get_op_filter_tap_12;
 	filter_tap filter_tap_12_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_11),
@@ -243,7 +243,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 13
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_13;
+	wire signed [27:0] get_op_filter_tap_13;
 	filter_tap filter_tap_13_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_12),
@@ -256,7 +256,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 14
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_14;
+	wire signed [27:0] get_op_filter_tap_14;
 	filter_tap filter_tap_14_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_13),
@@ -269,7 +269,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 15
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_15;
+	wire signed [27:0] get_op_filter_tap_15;
 	filter_tap filter_tap_15_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_14),
@@ -282,7 +282,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 16
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_16;
+	wire signed [27:0] get_op_filter_tap_16;
 	filter_tap filter_tap_16_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_15),
@@ -295,7 +295,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 17
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_17;
+	wire signed [27:0] get_op_filter_tap_17;
 	filter_tap filter_tap_17_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_16),
@@ -308,7 +308,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 18
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_18;
+	wire signed [27:0] get_op_filter_tap_18;
 	filter_tap filter_tap_18_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_17),
@@ -321,7 +321,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 19
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_19;
+	wire signed [27:0] get_op_filter_tap_19;
 	filter_tap filter_tap_19_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_18),
@@ -334,7 +334,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 20
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_20;
+	wire signed [27:0] get_op_filter_tap_20;
 	filter_tap filter_tap_20_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_19),
@@ -347,7 +347,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 21
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_21;
+	wire signed [27:0] get_op_filter_tap_21;
 	filter_tap filter_tap_21_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_20),
@@ -360,7 +360,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 22
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_22;
+	wire signed [27:0] get_op_filter_tap_22;
 	filter_tap filter_tap_22_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_21),
@@ -373,7 +373,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 23
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_23;
+	wire signed [27:0] get_op_filter_tap_23;
 	filter_tap filter_tap_23_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_22),
@@ -386,7 +386,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 24
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_24;
+	wire signed [27:0] get_op_filter_tap_24;
 	filter_tap filter_tap_24_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_23),
@@ -399,7 +399,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 25
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_25;
+	wire signed [27:0] get_op_filter_tap_25;
 	filter_tap filter_tap_25_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_24),
@@ -412,7 +412,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 26
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_26;
+	wire signed [27:0] get_op_filter_tap_26;
 	filter_tap filter_tap_26_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_25),
@@ -425,7 +425,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 27
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_27;
+	wire signed [27:0] get_op_filter_tap_27;
 	filter_tap filter_tap_27_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_26),
@@ -438,7 +438,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 28
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_28;
+	wire signed [27:0] get_op_filter_tap_28;
 	filter_tap filter_tap_28_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_27),
@@ -451,7 +451,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 29
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_29;
+	wire signed [27:0] get_op_filter_tap_29;
 	filter_tap filter_tap_29_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_28),
@@ -464,7 +464,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 30
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_30;
+	wire signed [27:0] get_op_filter_tap_30;
 	filter_tap filter_tap_30_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_29),
@@ -477,7 +477,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 31
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_31;
+	wire signed [27:0] get_op_filter_tap_31;
 	filter_tap filter_tap_31_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_30),
@@ -490,7 +490,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 32
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_32;
+	wire signed [27:0] get_op_filter_tap_32;
 	filter_tap filter_tap_32_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_31),
@@ -503,7 +503,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 33
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_33;
+	wire signed [27:0] get_op_filter_tap_33;
 	filter_tap filter_tap_33_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_32),
@@ -516,7 +516,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 34
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_34;
+	wire signed [27:0] get_op_filter_tap_34;
 	filter_tap filter_tap_34_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_33),
@@ -529,7 +529,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 35
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_35;
+	wire signed [27:0] get_op_filter_tap_35;
 	filter_tap filter_tap_35_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_34),
@@ -542,7 +542,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 36
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_36;
+	wire signed [27:0] get_op_filter_tap_36;
 	filter_tap filter_tap_36_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_35),
@@ -555,7 +555,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 37
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_37;
+	wire signed [27:0] get_op_filter_tap_37;
 	filter_tap filter_tap_37_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_36),
@@ -568,7 +568,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 38
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_38;
+	wire signed [27:0] get_op_filter_tap_38;
 	filter_tap filter_tap_38_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_37),
@@ -581,7 +581,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 39
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_39;
+	wire signed [27:0] get_op_filter_tap_39;
 	filter_tap filter_tap_39_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_38),
@@ -594,7 +594,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 40
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_40;
+	wire signed [27:0] get_op_filter_tap_40;
 	filter_tap filter_tap_40_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_39),
@@ -607,7 +607,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 41
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_41;
+	wire signed [27:0] get_op_filter_tap_41;
 	filter_tap filter_tap_41_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_40),
@@ -620,7 +620,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 42
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_42;
+	wire signed [27:0] get_op_filter_tap_42;
 	filter_tap filter_tap_42_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_41),
@@ -633,7 +633,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 43
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_43;
+	wire signed [27:0] get_op_filter_tap_43;
 	filter_tap filter_tap_43_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_42),
@@ -646,7 +646,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 44
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_44;
+	wire signed [27:0] get_op_filter_tap_44;
 	filter_tap filter_tap_44_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_43),
@@ -659,7 +659,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 45
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_45;
+	wire signed [27:0] get_op_filter_tap_45;
 	filter_tap filter_tap_45_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_44),
@@ -672,7 +672,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 46
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_46;
+	wire signed [27:0] get_op_filter_tap_46;
 	filter_tap filter_tap_46_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_45),
@@ -685,7 +685,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 47
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_47;
+	wire signed [27:0] get_op_filter_tap_47;
 	filter_tap filter_tap_47_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_46),
@@ -698,7 +698,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 48
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_48;
+	wire signed [27:0] get_op_filter_tap_48;
 	filter_tap filter_tap_48_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_47),
@@ -711,7 +711,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 49
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_49;
+	wire signed [27:0] get_op_filter_tap_49;
 	filter_tap filter_tap_49_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_48),
@@ -724,7 +724,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 50
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_50;
+	wire signed [27:0] get_op_filter_tap_50;
 	filter_tap filter_tap_50_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_49),
@@ -737,7 +737,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 51
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_51;
+	wire signed [27:0] get_op_filter_tap_51;
 	filter_tap filter_tap_51_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_50),
@@ -750,7 +750,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 52
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_52;
+	wire signed [27:0] get_op_filter_tap_52;
 	filter_tap filter_tap_52_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_51),
@@ -763,7 +763,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 53
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_53;
+	wire signed [27:0] get_op_filter_tap_53;
 	filter_tap filter_tap_53_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_52),
@@ -776,7 +776,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 54
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_54;
+	wire signed [27:0] get_op_filter_tap_54;
 	filter_tap filter_tap_54_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_53),
@@ -789,7 +789,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 55
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_55;
+	wire signed [27:0] get_op_filter_tap_55;
 	filter_tap filter_tap_55_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_54),
@@ -802,7 +802,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 56
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_56;
+	wire signed [27:0] get_op_filter_tap_56;
 	filter_tap filter_tap_56_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_55),
@@ -815,7 +815,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 57
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_57;
+	wire signed [27:0] get_op_filter_tap_57;
 	filter_tap filter_tap_57_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_56),
@@ -828,7 +828,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 58
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_58;
+	wire signed [27:0] get_op_filter_tap_58;
 	filter_tap filter_tap_58_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_57),
@@ -841,7 +841,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 59
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_59;
+	wire signed [27:0] get_op_filter_tap_59;
 	filter_tap filter_tap_59_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_58),
@@ -854,7 +854,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 60
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_60;
+	wire signed [27:0] get_op_filter_tap_60;
 	filter_tap filter_tap_60_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_59),
@@ -867,7 +867,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 61
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_61;
+	wire signed [27:0] get_op_filter_tap_61;
 	filter_tap filter_tap_61_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_60),
@@ -880,7 +880,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 62
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_62;
+	wire signed [27:0] get_op_filter_tap_62;
 	filter_tap filter_tap_62_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_61),
@@ -893,7 +893,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 63
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_63;
+	wire signed [27:0] get_op_filter_tap_63;
 	filter_tap filter_tap_63_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_62),
@@ -906,7 +906,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 64
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_64;
+	wire signed [27:0] get_op_filter_tap_64;
 	filter_tap filter_tap_64_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_63),
@@ -919,7 +919,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 65
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_65;
+	wire signed [27:0] get_op_filter_tap_65;
 	filter_tap filter_tap_65_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_64),
@@ -932,7 +932,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 66
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_66;
+	wire signed [27:0] get_op_filter_tap_66;
 	filter_tap filter_tap_66_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_65),
@@ -945,7 +945,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 67
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_67;
+	wire signed [27:0] get_op_filter_tap_67;
 	filter_tap filter_tap_67_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_66),
@@ -958,7 +958,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 68
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_68;
+	wire signed [27:0] get_op_filter_tap_68;
 	filter_tap filter_tap_68_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_67),
@@ -971,7 +971,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 69
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_69;
+	wire signed [27:0] get_op_filter_tap_69;
 	filter_tap filter_tap_69_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_68),
@@ -984,7 +984,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 70
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_70;
+	wire signed [27:0] get_op_filter_tap_70;
 	filter_tap filter_tap_70_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_69),
@@ -997,16 +997,7 @@ module bandpass_filter(
 	// ------------------------------- // 
 	// 		Filter tap - 71
 	// ------------------------------- // 
-	wire signed [11:0] get_op_filter_tap_71; 
-	reg signed [11:0] reg_op_filter_tap_71; 
-	always@(posedge ip_clock or negedge ip_reset) begin  
-		if(ip_reset == 1'd0) begin  
-			reg_op_filter_tap_71 <= 12'b000000000000;
-		end else begin 
-			reg_op_filter_tap_71 <= get_op_filter_tap_71;
-		end 
-	end 
-	
+	wire signed [27:0] get_op_filter_tap_71; 
 	filter_tap filter_tap_71_inst( 
 		.ip_data(ip_data), 
 		.ip_data_2(get_op_filter_tap_70), 
@@ -1016,6 +1007,6 @@ module bandpass_filter(
 		.op_data(get_op_filter_tap_71)
 	);
 	
-	assign op_data = reg_op_filter_tap_71;
+	assign op_data = get_op_filter_tap_71;
 	
 endmodule 

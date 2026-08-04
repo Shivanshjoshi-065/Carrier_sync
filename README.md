@@ -5,7 +5,7 @@ The receiver is designed to recover the carrier of a QPSK-modulated signal using
 
 The transmitter generates a QPSK signal using:
 •	PRBS Generator 
-QPSK Symbol Mapper
+•	QPSK Symbol Mapper
 •	Numerically Controlled Oscillator (NCO)
 •	I/Q Modulator
 
@@ -23,7 +23,8 @@ The AGC stabilizes the received signal amplitude using:
 
 The carrier synchronizer recovers the carrier phase and generates oversampled baseband I and Q signals.
 
-# Tools Used
+# Tools Used 
+
 •	Verilog HDL 
 • Xilinx ISE 13.x 
 • Microchip Libero SoC 

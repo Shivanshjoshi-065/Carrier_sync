@@ -1,17 +1,41 @@
-# Overview 
-This project implements a Carrier synchronizer system with QPSK modulator as input signal using Verilog HDL.
-This design is intended for FPGA-based digital communication systems specifically for satellite modem and receivers that operates with a 64 MHz sampling clock and 8 MHz signal frequency.
+# QPSK Carrier Synchronizer in Verilog HDL
+# Overview
+This project implements a QPSK Carrier Synchronizer in Verilog HDL for FPGA-based digital communication systems.
+The receiver is designed to recover the carrier of a QPSK-modulated signal using a Costas Loop and Numerically Controlled Oscillator (NCO). The implementation operates with a 64 MHz sampling clock and an 8 MHz carrier frequency. 
 
-The Carrier synchronizer system here is an open loop system.
-The modulator includes PRBS generation, symbol mapping, carrier generation, and I/Q modulation to produce a QPSK-modulated output signal. 
+The transmitter generates a QPSK signal using:
+•	PRBS Generator
+•	QPSK Symbol Mapper
+•	Numerically Controlled Oscillator (NCO)
+•	I/Q Modulator
 
-The bandpass filter is also used here for passing 8 MHz signal to the demodulator system.
-The AGC includes power estimation, accumulator and product blocks to control the gain of the system.  
-The Carrier synchronizer includes costas loop and Nco block to recover carrier signals.
+The receiver consists of:
+•	Automatic Gain Control (AGC)
+•	Carrier Synchronizer (Costas Loop)
+•	Low-Pass Filters
+•	NCO for carrier recovery 
 
-# Tools used 
-- Verilog HDL
-- Xilinx ISE / Libero Soc
-- ModelSim / QuestaSim 
+The AGC stabilizes the received signal amplitude using:
+•	Power Estimation
+•	Gain Error Calculation
+•	Gain Accumulator
+•	Gain Scaling 
 
+The carrier synchronizer recovers the carrier phase and generates oversampled baseband I and Q signals.
+
+# Tools Used
+•	Verilog HDL
+•	Xilinx ISE 13.x
+•	Microchip Libero SoC
+•	ModelSim / QuestaSim
+
+# Simulation
+The repository includes simulation waveforms demonstrating:
+•	QPSK modulation
+•	NCO sine and cosine generation
+•	Mixer outputs
+•	Low-pass filter outputs
+•	AGC operation
+•	Carrier recovery
+•	Recovered baseband I/Q signals
 

@@ -4,8 +4,8 @@ This project implements a QPSK Carrier Synchronizer in Verilog HDL for FPGA-base
 The receiver is designed to recover the carrier of a QPSK-modulated signal using a Costas Loop and Numerically Controlled Oscillator (NCO). The implementation operates with a 64 MHz sampling clock and an 8 MHz carrier frequency. 
 
 The transmitter generates a QPSK signal using:
-•	PRBS Generator
-•	QPSK Symbol Mapper
+•	PRBS Generator 
+QPSK Symbol Mapper
 •	Numerically Controlled Oscillator (NCO)
 •	I/Q Modulator
 
